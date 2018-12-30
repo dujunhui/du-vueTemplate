@@ -1,0 +1,16 @@
+
+/* ==================================================
+ * 			 		 项目初始化添加的公共样式
+ * ================================================= */
+
+//默认样式
+@import './scaffold.scss';
+//页面布局样式
+@import './page.scss';
+//公共样式
+@import './common.scss';
+
+//mintui样式
+@import 'my-mint/index.scss';
+//动画样式
+@import './transition.scss';

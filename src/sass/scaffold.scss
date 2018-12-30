@@ -1,0 +1,79 @@
+/* ==================================================
+ * 			 		 默认样式
+ * ================================================= */
+
+html {
+  font-size: 62.5%;
+}
+@media only screen and (min-width: 481px){
+  html {
+    font-size: 94%!important;
+  }
+}
+@media only screen and (min-width: 561px){
+  html {
+    font-size: 109%!important;
+  }
+}
+@media only screen and (min-width: 641px){
+  html {
+    font-size: 125%!important;
+  }
+}
+
+// Set box-sizing border-box
+* {
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-touch-callout: none;
+	//user-select: none;
+}
+
+html{
+  line-height: inherit;
+}
+h1,h2{
+  margin: 0;padding: 0;
+}
+// remove body margin, set font family in ios
+body {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+	margin: 0;
+	-webkit-text-size-adjust: 100%;
+}
+
+// remove defult list-style
+ol,
+ul {
+	list-style:none;
+	padding: 0;
+	margin: 0;
+}
+
+// Images
+img {
+  display: inline-block;
+  vertical-align: middle;
+  pointer-events: none;  //禁止微信浏览器点击图片放大
+}
+
+// remove default margin
+p {
+	margin: 0;
+}
+
+// iOS "clickable elements" fix for role="button"
+//
+// Fixes "clickability" issue (and more generally, the firing of events such as focus as well)
+// for traditionally non-focusable elements with role="button"
+// see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+input{
+  padding: 0;
+  outline:none;
+  -webkit-appearance: none; //去掉ios阴影
+  -webkit-user-select:auto; //修复ios的input无法输入
+}
+
+[role="button"] {
+  cursor: pointer;
+}

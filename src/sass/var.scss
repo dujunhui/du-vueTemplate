@@ -1,0 +1,56 @@
+/* ==================================================
+ * 			 		 全局Sass变量
+ * 	这里简单介绍下CSS的布局，这里采用主流的Flexbox,
+ *  在高度上采取固定px，宽度自适应
+ *  在布局上有参考Framework7 的布局,在一些宽度上采用rem来优化多终端的适应
+ * ================================================= */
+
+//======= Colors
+$white-base:									#ffffff !default; // 白色
+
+$black:                       #000000 !default;
+$black-base:									#4A4A4A !default;
+$black-light:									#666666 !default;
+$black-light-light:						#999999 !default;
+
+$blue-base:										#0076FF !default;
+$blue-drak:										#356DFC !default;
+$blue-light:									#A2BBFC !default;
+
+$red-base:										#d01423 !default;
+$red-drak:                    #bc1323 !default;
+$red-light:										#FFB4B4 !default;
+
+
+$yellow-base:										#ff6000 !default;
+$yellow-drak:										#ff6000 !default;
+$blue-light:										#ff6000 !default;
+
+
+$green:                         #5bbf5b !default;
+
+//** Primary Color
+$color-primary:									#cc0004 !default;
+
+
+
+//** Font  Color
+$font-default:                #2c3e50 !default;
+
+
+
+//** 组件的高度
+$header-height:									1.5rem; // 头部bar组件的高度、
+$bottom-height:									1.3rem; // 底部bar组件的高度、
+$navBar-height:                 1.3rem; // tab切换组件的高度、
+
+//** 字体大小
+$font-small-size:                0.4rem;
+$font-base-size:                 0.45rem;
+$font-big-size:                  0.5rem;
+$font-big-big-size:              0.6rem;
+
+//** 组件颜色
+$bottom-bar-color:            #3d3d3f;   // 底部bar颜色
+$bottom-line-color:           #dcdcdc;   // 下边线
+$page-background-color:       #f4f4f4;   // 页面灰色背景
