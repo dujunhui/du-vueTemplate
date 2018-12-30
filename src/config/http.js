@@ -8,12 +8,13 @@ import axios from 'axios'
 // import qs from 'qs'
 
 import store from '@/store'
+import { baseURL } from './env'
 
 // axios 配置
 axios.defaults.timeout = 10000
 
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
-// axios.defaults.baseURL = 'http://localhost:8082';
+axios.defaults.baseURL = baseURL
 
 // 请求时拦截
 axios.interceptors.request.use((config) => {

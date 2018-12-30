@@ -2,9 +2,7 @@
  *                公 用 资 源 函 数
  *                   格式化数据
  * =============================================== */
-
-let format
-format = {
+let format = {
   // 去除开头是0，和非数字字符
   number (v) {
     let s = v.replace(/[^\d]/g, '')
@@ -31,15 +29,6 @@ format = {
   },
   toDou (num) {
     if (num < 10) {
-      return '0' + num
-    } else {
-      return num
-    }
-  },
-  toDouDou (num) {
-    if (num < 10) {
-      return '00' + num
-    } else if (num < 100) {
       return '0' + num
     } else {
       return num

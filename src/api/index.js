@@ -9,14 +9,11 @@
  * let basicParams = {
  *    key: 'be11167ba8f986655acdaeb068210567'
  * }
- * let apiUrl = 'http://192.168.161.70:4000'
  */
-
-let apiUrl = process.env.BASE_API
 
 let apiList = {
   GetGoods: {
-    url: apiUrl + '/getGoods'
+    url: '/getGoods'
   }
 }
 

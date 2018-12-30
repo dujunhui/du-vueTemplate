@@ -10,6 +10,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+      // 跨域解决方法
       '/Goods': {
         target: 'http://192.168.161.70:9966',
         changeOrigin: true,
