@@ -17,6 +17,9 @@
             <div><mt-button @click.native="showToastSuccessBack">Toast成功的提示后返回</mt-button></div>
             <div><mt-button @click.native="showToastError">Toast失败的提示</mt-button></div>
             <div><mt-button @click.native="showToastErrorBack">Toast失败的提示后返回</mt-button></div>
+            <div>
+              <img src="../../assets/logo.png" alt="">
+            </div>
             <p v-for="(i, index) in 100" :key="index">{{i}}</p>
           </div>
         </vue-scroll>
