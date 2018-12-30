@@ -1,12 +1,13 @@
 # dujunhui
 
-> A Vue.js project
+> vue自定义模板
 
 ## Build Setup
 
 ```文件目录结构
 -- src
-    -- api.js                      # 请求文件 
+    -- api
+       -- api.js                   # 请求文件 
     -- assets                      # 私有资源
     -- common                      # 通用组件
     -- components                  # 业务组件
