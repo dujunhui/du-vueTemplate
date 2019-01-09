@@ -10,17 +10,16 @@
         <vue-scroll :ops="ops">
           <div class="box">
             <div @click="$router.replace('/page1')">page1 > </div>
-            <div>用户：{{userId}}</div>
+            <div>用户：{{userName}}</div>
+            <div><input type="text" v-focus v-number></div>
             <div><mt-button @click.native="showToast">Toast提示</mt-button></div>
             <div><mt-button @click.native="showToastBack">Toast提示后返回</mt-button></div>
             <div><mt-button @click.native="showToastSuccess">Toast成功的提示</mt-button></div>
             <div><mt-button @click.native="showToastSuccessBack">Toast成功的提示后返回</mt-button></div>
             <div><mt-button @click.native="showToastError">Toast失败的提示</mt-button></div>
             <div><mt-button @click.native="showToastErrorBack">Toast失败的提示后返回</mt-button></div>
-            <div>
-              <img src="../../assets/logo.png" alt="">
-            </div>
-            <p v-for="(i, index) in 100" :key="index">{{i}}</p>
+            <div class="imgBox"><img src="../../assets/img/logo.png"></div>
+            <p v-for="(i, index) in goods" :key="index">{{i.name}} ￥{{i.price}}</p>
           </div>
         </vue-scroll>
       </div>
@@ -29,6 +28,7 @@
       <transition name="shade">
         <div v-show="buyCarShow" class="shadeBox" @click="buyCarShow=false"></div>
       </transition>
+
       <!--购物车层-->
       <transition name="slide-fade">
         <div v-show="buyCarShow" class="buyCarBox">
@@ -53,33 +53,38 @@ import { verify } from '@/utils/verify'
 import { apiHandler } from '@/api/index'
 import mixin from '@/mixin/mixin'
 import myListOrder from './listOrder.vue'
+import { focus, number } from '../../directives/common'
 
 let data = {
   orderPopupVisible: false, // 我的订单pop层
   buyCarShow: false, // 购物车开关
-  userId: '', // 工号
+  userName: '', // 工号
   goods: [], // 商品
-  orders: []
+  orders: ['sss']
 }
 export default {
   data () {
     return data
   },
   components: { myListOrder },
+  directives: {
+    ...focus,
+    ...number
+  },
   mounted () {
     this.$post(apiHandler('GetGoods'))
       .then((res) => {
         if (res.state === 'success') {
-          this.userId = res.data.userId
+          this.userName = res.data.userName
           this.goods = res.data.goods
-          if (verify.IsRequired(this.userId)) {
+          if (verify.IsRequired(this.userName)) {
             this.setToastMsgError({message: '获取用户信息失败'})
           }
         }
       })
   },
   destroyed () {
-    this.userId = ''
+    this.userName = ''
   },
   methods: {
     openOrderPopup () {
@@ -120,6 +125,12 @@ export default {
   padding: 0.2rem;
   div{
     padding: 0.2rem 0;
+  }
+  .imgBox{
+    width: rem(500);
+    img{
+      @include img-responsive()
+    }
   }
 }
 

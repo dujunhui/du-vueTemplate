@@ -12,6 +12,7 @@ let format = {
   trim (v) {
     return v.replace(/(^\s*)|(\s*$)/g, '')
   },
+  // 去掉字符串中所有空格
   allTrim (str) {
     return str.replace(/\s+/g, '')
   },
@@ -19,12 +20,11 @@ let format = {
   timestampToTime (timestamp) {
     let date = new Date(timestamp) // 时间戳为10位需*1000，时间戳为13位的话不需乘1000
     let Y = date.getFullYear() + '年'
-    let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1)
+    let M = date.getMonth() + 1
     let D = date.getDate()
     let h = date.getHours()
     let m = date.getMinutes()
     let s = date.getSeconds()
-    // return Y+M+D+h+m+s;
     return Y + this.toDou(M) + '月' + this.toDou(D) + '日 ' + this.toDou(h) + ':' + this.toDou(m) + ':' + this.toDou(s)
   },
   toDou (num) {

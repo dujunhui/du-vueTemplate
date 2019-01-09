@@ -5,7 +5,7 @@
 
 let verify = {
   /**
-   *  非空
+   *  非空 null、undefined、''
   */
   IsRequired (v) {
     return (window._.isNull(v) || window._.isUndefined(v) || v === '')

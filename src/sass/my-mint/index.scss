@@ -58,18 +58,17 @@
 /*
  * mt-header的重定义
  */
-.mint-header-title{
-  font-size: $font-big-size;
-  height: $header-height;
-  line-height: $header-height;
-  vertical-align: middle;
-}
 .mint-header{
   font-size: $font-small-size;
   height: $header-height;
 }
 .mint-header.is-fixed{
   position: absolute;
+}
+.mint-header-title{
+  font-size: $font-big-size;
+  height: $header-height;
+  line-height: $header-height;
 }
 .mint-header .mint-button{
   color: $white-base;
@@ -105,7 +104,7 @@
   font-size: $font-small-size;
 }
 
-
+/*toast 重置*/
 .mint-toast .mintui{
-  font-size: 1rem;
+  font-size: rem(42);
 }

@@ -8,7 +8,7 @@
 -- src
     -- api
        -- api.js                   # 请求文件 
-    -- assets                      # 私有资源
+    -- assets                      # 共用的样式、icon图片等
     -- common                      # 通用组件
     -- components                  # 业务组件
     -- directives                  # 自定义事件

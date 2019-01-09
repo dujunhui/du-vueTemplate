@@ -14,6 +14,7 @@
         <du-tab-container v-model="tabSelectedId">
           <du-tab-container-item id="1">
             <vue-scroll :ops="ops">
+              <div>{{data[0]}}</div>
               <p v-for="(i,index) of 100" :key="index">1--{{i}}</p>
             </vue-scroll>
           </du-tab-container-item>

@@ -1,5 +1,5 @@
 import { format } from '../utils/format'
-export default{
+let focus = {
   /*
    *  v-focus 自动获取焦点
    *  注意：影响路由的进场动画
@@ -9,8 +9,10 @@ export default{
     inserted: function (el) {
       el.focus() // 获取焦点
     }
-  },
+  }
+}
 
+let number = {
   /*
    *  v-number 只能输入非0正整数
    *  注意：与v-model有冲突
@@ -26,32 +28,53 @@ export default{
     unbind: function (el) {
       el.removeEventListener('input', el.handler)
     }
-  },
+  }
+}
+
+let drag = {
   /*
-   *  v-quan 优惠券的自定义事件
-   *  注意：与v-model有冲突
+   *  v-drag 拖拽
+   *  <div v-drag>我可以拖拽</div>
    */
-  quan: {
-    bind: function (el, binding, vnode) {
-      el.handler = function () {
-        // vnode.context.name = format.number(el.value) //用vnode.context可以拿到this里data的数据
-        let diKou = format.zNumber(el.value)
-        // 不能超过总券值
-        if (diKou > vnode.context.fmyMoney) {
-          diKou = ''
+  drag: {
+    inserted: function (el) {
+      let oW, oH
+      // 绑定touchstart事件
+      el.addEventListener('touchstart', function (e) {
+        console.log(e)
+        let touches = e.touches[0]
+        oW = touches.clientX - el.offsetLeft
+        oH = touches.clientY - el.offsetTop
+        // 阻止页面的滑动默认事件
+        document.addEventListener('touchmove', defaultEvent, false)
+      }, false)
+
+      el.addEventListener('touchmove', function (e) {
+        let touches = e.touches[0]
+        let oLeft = touches.clientX - oW
+        let oTop = touches.clientY - oH
+        if (oLeft < 0) {
+          oLeft = 0
+        } else if (oLeft > document.documentElement.clientWidth - el.offsetWidth) {
+          oLeft = (document.documentElement.clientWidth - el.offsetWidth)
         }
-        // 不能超过总价格（不能抵扣运费）
-        let zongJia = parseFloat(Math.fixed(parseFloat(vnode.context.order_real_amount)))
-        if (zongJia < diKou) {
-          diKou = ''
+        if (oTop < 0) {
+          oTop = 0
+        } else if (oTop > document.documentElement.clientHeight - el.offsetHeight) {
+          oTop = (document.documentElement.clientHeight - el.offsetHeight)
         }
-        el.value = diKou
-        vnode.context.quan = el.value // 双向绑定值
+        el.style.left = oLeft + 'px'
+        el.style.top = oTop + 'px'
+      }, false)
+
+      el.addEventListener('touchend', function () {
+        document.removeEventListener('touchmove', defaultEvent, false)
+      }, false)
+      function defaultEvent (e) {
+        e.preventDefault()
       }
-      el.addEventListener('input', el.handler)
-    },
-    unbind: function (el) {
-      el.removeEventListener('input', el.handler)
     }
   }
 }
+
+export { focus, number, drag }

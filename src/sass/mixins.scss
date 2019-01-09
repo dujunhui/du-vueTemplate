@@ -1,3 +1,24 @@
+//mint-ui的px转rem
+@function mintRem($n) {
+  @return $n / (540 / 10)+rem;
+}
+
+//设计稿按照750的设计
+@function rem($n) {
+  @return $n / (1080 / 10)+rem;
+}
+
+//** 组件的高度
+$header-height:									mintRem(70); // 头部bar组件的高度、
+$bottom-height:									mintRem(65); // 底部bar组件的高度、
+$navBar-height:                 mintRem(65); // tab切换组件的高度、
+
+//** 字体大小
+$font-small-size:                rem(42);
+$font-base-size:                 rem(46);
+$font-big-size:                  rem(50);
+$font-big-big-size:              rem(60);
+
 // 保持图像不超过他们父母的宽度
 @mixin img-responsive($display: block) {
   display: $display;
@@ -31,9 +52,11 @@
   }
 }
 
+//下边框
 @mixin bottomBorder() {
   border-bottom: 1px solid $bottom-line-color;
 }
+//全边框
 @mixin borderBox(){
   border: 1px solid $bottom-line-color;
 }
@@ -41,6 +64,7 @@
   border: 1px solid $red;
 }
 
+//遮罩
 @mixin shade() {
   position: absolute;
   left: 0;

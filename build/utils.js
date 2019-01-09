@@ -60,6 +60,7 @@ exports.cssLoaders = function (options) {
     postcss: generateLoaders(),
     less: generateLoaders('less'),
     sass: generateLoaders('sass', { indentedSyntax: true }),
+    // 引入sass全局变量
     scss: generateLoaders('sass').concat(
       {
         loader: 'sass-resources-loader',
