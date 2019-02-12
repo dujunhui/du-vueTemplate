@@ -20,7 +20,7 @@
           </du-tab-container-item>
           <du-tab-container-item id="2">
             <vue-scroll :ops="ops">
-              <p v-for="(i,index) of 50" :key="index">2--{{i}}</p>
+              <p v-for="(i,index) of 100" :key="index">2--{{i}}</p>
             </vue-scroll>
           </du-tab-container-item>
         </du-tab-container>
