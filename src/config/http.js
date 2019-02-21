@@ -20,6 +20,10 @@ axios.defaults.baseURL = baseURL
 axios.interceptors.request.use((config) => {
   // 发送请求之前做一些处理
   store.commit('mintVar/setLoadingOpen', {message: '加载中', spinnerType: 'snake'}) // 打开loading
+
+  // 每次发送请求之前检测都vuex存有token,那么都要放在请求头发送给服务器
+  config.headers.Authorization = `token 123`
+
   return config
 }, (error) => {
   store.commit('mintVar/setLoadingClose') // 关闭loading

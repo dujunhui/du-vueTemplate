@@ -45,11 +45,6 @@ window._ = _
 // 关闭生产模式下给出的提示
 Vue.config.productionTip = false
 
-router.beforeEach((to, from, next) => {
-  Vue.prototype.cancelAjax() // 中断请求
-  next()
-})
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
