@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-const index = resolve => require(['../components/index/index.vue'], resolve)
-const login = resolve => require(['../components/login/login.vue'], resolve)
-const page1 = resolve => require(['../components/page1/page1.vue'], resolve)
+const index = resolve => require(['../views/index/index.vue'], resolve)
+const login = resolve => require(['../views/login/login.vue'], resolve)
+const page1 = resolve => require(['../views/page1/page1.vue'], resolve)
 
 Vue.use(Router)
 

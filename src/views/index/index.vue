@@ -49,13 +49,15 @@
 </template>
 
 <script>
+
+import IndexService from '@/services/IndexService'
 import { verify } from '@/utils/verify'
-import { apiHandler } from '@/api/index'
 import mixin from '@/mixin/mixin'
 import myListOrder from './listOrder.vue'
 import { focus, number } from '../../directives/common'
 
 let data = {
+  indexService: null,
   orderPopupVisible: false, // 我的订单pop层
   buyCarShow: false, // 购物车开关
   userName: '', // 工号
@@ -72,21 +74,24 @@ export default {
     ...number
   },
   mounted () {
-    this.$post(apiHandler('GetGoods'))
-      .then((res) => {
-        if (res.state === 'success') {
-          this.userName = res.data.userName
-          this.goods = res.data.goods
-          if (verify.IsRequired(this.userName)) {
-            this.setToastMsgError({message: '获取用户信息失败'})
-          }
+    this.init()
+    this.indexService.getGoods((data) => {
+      if (data.state === 'success') {
+        this.userName = data.data.userName
+        this.goods = data.data.goods
+        if (verify.IsRequired(this.userName)) {
+          this.setToastMsgError({message: '获取用户信息失败'})
         }
-      })
+      }
+    })
   },
   destroyed () {
     this.userName = ''
   },
   methods: {
+    init () {
+      this.indexService = new IndexService(this)
+    },
     openOrderPopup () {
       this.orderPopupVisible = true
     },
